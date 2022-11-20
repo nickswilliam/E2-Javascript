@@ -47,15 +47,15 @@ const searchID = (e) => {
     errorContainer();
     container.innerHTML = 'Debe ingresar un valor';
   } else {
-    const arrayFilter = pizzasObj.filter((element) => element.id === inputToInt);
+    const arrayFilter = pizzasObj.find((element) => element.id === inputToInt);
 
-    if (arrayFilter.length === 0) {
+    if (arrayFilter === undefined) {
       errorContainer();
       container.innerHTML = 'No hay pizzas para el ID ingresado'
     } else {
       showContainer();
-      container.innerHTML = `La pizza es: <h2>${arrayFilter[0].nombre}</h2>
-                                  y Sale <h3>$${arrayFilter[0].precio}</h3>`
+      container.innerHTML = `La pizza es: <h2>${arrayFilter.nombre}</h2>
+                                  y Sale <h3>$${arrayFilter.precio}</h3>`
     }
   }
   inputNumber.value = '';
